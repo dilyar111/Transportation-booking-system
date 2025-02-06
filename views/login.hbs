@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation Booking System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('/images/img1.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .title {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffcc00;
+            text-shadow: 0 4px 10px rgba(255, 102, 0, 0.5);
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+        .login-form {
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .login-form input, .login-form select, .login-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-form button {
+            background-color: #ff6600;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #ffcc00;
+        }
+        .navigation {
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+        .navigation a {
+            margin: 0 15px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navigation a:hover {
+            color: #ff6a00;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+        }
+        .signup-link {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #ffcc00;
+        }
+        .signup-link a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .signup-link a:hover {
+            color: #ff6a00;
+        }
+        #admin-id-field {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Explore Your Journey</h1>
+        <p class="subtitle">Welcome to our Transportation Booking System! Please log in to proceed.</p>
+
+        <!-- Login Form -->
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="login-form" action="/login" method="POST">
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                <select id="user-type" name="type" onchange="toggleTransportChoices()" required>
+                    <option value="">Select Type</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <div id="admin-id-field">
+                    <input type="text" name="admin_id" id="admin-id" placeholder="Enter Admin ID">
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div class="signup-link">
+            <p>Don't have an account? <a href="/signup">Sign Up Here</a></p>
+        </div>
+
+        <div class="navigation">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <footer class="footer">&copy; 2024 Transportation Booking System. All Rights Reserved.</footer>
+    </div>
+
+    <script>
+        function toggleTransportChoices() {
+            let userType = document.getElementById("user-type").value;
+            let adminField = document.getElementById("admin-id-field");
+            let adminInput = document.getElementById("admin-id");
+
+            if (userType === "admin") {
+                adminField.style.display = "block";
+                adminInput.setAttribute("required", "true");
+            } else {
+                adminField.style.display = "none";
+                adminInput.removeAttribute("required");
+            }
+        }
+    </script>
+</body>
+</html>
